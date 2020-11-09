@@ -1,32 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuel Converter</title>
-</head>
-<body>
-      <h1> Fuel Converter </h1> 
-      <div> 
-       <form onsubmit="return awesome()"> 
-        A: <input type="number" id="aee"><br>
-        B: <input type="number" id="bee"><br>
-        C: <input type="number" id="cee"><br>
-        <input type="submit" value="calculate">
-        <p id="val"></p> 
-       </form> 
-      </div>
-      <script>   
-        function awesome(){
-          var a = document.querySelector("#aee");
-          var b = document.querySelector("#bee");
-          var c = document.querySelector("#cee");
-          
-          var answer = document.querySelector("#val");
-          
-          answer.innerHTML = parseInt(a.value)*parseInt(c.value)/parseInt(b.value);
-          return false;
-        };   
-      </script>    
-</body>
+<!doctype html>
+<html>
+ <body>  
+   <script>   
+    function awesome(){
+      var a = document.querySelector("#aee");
+      var b = document.querySelector("#bee");
+      var c = document.querySelector("#cee");
+      
+      var answer = document.querySelector("#val2");
+      
+      answer.innerHTML ="&#x20b9 "+Math.floor(parseInt(a.value)*parseInt(c.value)/parseInt(b.value));
+      
+      var d = document.querySelector("#val");
+      d.style.display = "block";
+      document.querySelector("#cover").style.display = "block";
+      return false;
+    };   
+  </script>  
+  <style>
+    input{
+      width: 80%;
+    }  
+    
+    #val {
+      font-size: 35px;  
+      color: white;
+    }
+    
+    #val2 {
+      font-size: 112px;
+      color: white;
+    }
+    
+    #cover {
+      width: 100%;
+      background-color: #00994C;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+    
+    #realBtn {
+      width: 100%;  
+    }
+    
+  </style>
+  <h1>Road Trip Fuel Cost Calculator</h1> 
+  <div> 
+   <form  onsubmit="return awesome()" > 
+    <h3>Road Trip Distance</h3>
+    <input type="number" id="aee"> Kilometres <br><br>
+    <h3>Car/Bike Mileage per Litre</h3>
+    <input type="number" id="bee" style="width:76%"> Kilometres/Litre <br><br>
+    <h3>Fuel Price: Petrol/Diesel Price per litre</h3>
+    <input type="number" id="cee" style="width:83.5%"> &#x20b9/litre  <br><br>
+    <input id="realBtn"type="submit"  value="calculate">
+    <span id="cover" style="display:none">
+    <span id="val" style="display:none">Road Trip Cost</span>
+    <span id="val2"></span>
+    </span> 
+   </form> 
+  </div>  
+ </body>
 </html>
