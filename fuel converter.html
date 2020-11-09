@@ -1,25 +1,32 @@
-<!doctype html><html><head></head><body>  
-   <script>   
-    function awesome(){
-      var a = document.querySelector("#aee");
-      var b = document.querySelector("#bee");
-      var c = document.querySelector("#cee");
-      
-      var answer = document.querySelector("#val");
-      
-      answer.innerHTML = parseInt(a.value)*parseInt(c.value)/parseInt(b.value);
-      
-    };   
-  </script>  
-  <h1> Fuel Converter </h1> 
-  <div> 
-   <form> 
-    <input type="number" id="aee"><br>
-    <input type="number" id="bee"><br>
-    <input type="number" id="cee"><br>
-    <input type="submit" onclick="awesome()" value="calculate">
-    <p id="val"></p> 
-   </form> 
-  </div>  
- 
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Converter</title>
+</head>
+<body>
+      <h1> Fuel Converter </h1> 
+      <div> 
+       <form onsubmit="return awesome()"> 
+        <input type="number" id="aee"><br>
+        <input type="number" id="bee"><br>
+        <input type="number" id="cee"><br>
+        <input type="submit" value="calculate">
+        <p id="val"></p> 
+       </form> 
+      </div>
+      <script>   
+        function awesome(){
+          var a = document.querySelector("#aee");
+          var b = document.querySelector("#bee");
+          var c = document.querySelector("#cee");
+          
+          var answer = document.querySelector("#val");
+          
+          answer.innerHTML = parseInt(a.value)*parseInt(c.value)/parseInt(b.value);
+          return false;
+        };   
+      </script>    
+</body>
+</html>
