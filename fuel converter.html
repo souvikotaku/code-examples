@@ -1,0 +1,25 @@
+<!doctype html><html><head></head><body>  
+   <script>   
+    function awesome(){
+      var a = document.querySelector("#aee");
+      var b = document.querySelector("#bee");
+      var c = document.querySelector("#cee");
+      
+      var answer = document.querySelector("#val");
+      
+      answer.innerHTML = parseInt(a.value)*parseInt(c.value)/parseInt(b.value);
+      
+    };   
+  </script>  
+  <h1> Fuel Converter </h1> 
+  <div> 
+   <form> 
+    <input type="number" id="aee"><br>
+    <input type="number" id="bee"><br>
+    <input type="number" id="cee"><br>
+    <input type="submit" onclick="awesome()" value="calculate">
+    <p id="val"></p> 
+   </form> 
+  </div>  
+ 
+</body></html>
