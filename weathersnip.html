@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+</head>
+
+<body>
+ <!-- style-->
+    <style>
+        body {
+    background-image: url(https://i.pinimg.com/originals/25/46/b2/2546b270c10401222fc3b950902ad20c.jpg);
+    background-size: cover;
+    backdrop-filter: blur(4px);
+}
+
+.mainbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+}
+
+.searchbox {
+    text-align: center;
+    height: 400px;
+    background-image: url(https://media0.giphy.com/media/1uLQUtPLbJMQ0/giphy.gif?cid=ecf05e47wkr2fjjjxvjnqrllb3eatokysw7lh5emadg9rrla&rid=giphy.gif);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px;
+}
+
+.inputbox{
+    padding: 10px;
+}
+
+.inputVal {
+    border-radius: 5px;
+}
+
+.temp{
+    font-size: 60px;
+}
+.desc{
+    font-size: 25px;
+    text-transform: capitalize;
+}
+
+.name,.desc,.temp{
+    color: rgb(8, 8, 8);
+    text-shadow: 2px 2px 10px rgb(201, 243, 255);
+}
+
+.clicksub {
+    background-color: rgb(247, 134, 200);
+    border-radius: 5px;
+}
+
+
+.clicksub:hover{
+    background-color: rgb(247, 4, 85);
+    color: white;
+}
+
+#image{
+    filter: saturate(50%);
+   
+    filter: contrast(100%);
+    filter: brightness(100%);
+    filter:drop-shadow(0px 0px 10px #b1fd01);
+}
+
+@media (orientation:portrait){
+    .searchbox{
+        height: 470px;
+        width: 350px;
+    }
+
+    .inputVal{
+       width: 200px; 
+       height: 25px;
+    }
+    .clicksub{
+        width: 100px;
+        height: 28px;
+    }
+}
+
+#creator {
+     color: white;   
+}
+
+    
+    </style>
+ <!-- content-->
+    <div class="mainbox">
+        <div class="searchbox">
+            <div class="inputbox">
+                <input type="text" class="inputVal" placeholder="Enter City Name">
+                <input type="submit" class="clicksub" value="submit"><br>
+            </div>   
+            <h1 class="name"></h1>
+            <p class="desc"></p>
+            <span class="temp"></span>
+            <div id="image"></div><br>
+            <span id="creator">Created by Souvik Das</span>
+        </div>
+    </div>
+</body>
+
+<script>
+  var inputValue = document.querySelector(".inputVal");
+var button = document.querySelector(".clicksub");
+var wName = document.querySelector(".name");
+var wDesc = document.querySelector(".desc");
+var wTemp = document.querySelector(".temp");
+var wIcon = document.querySelector("#image");
+
+button.addEventListener('click',()=>{
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&units=metric&appid=7353020ee6b5ea4e932e98307c3b700e')
+     .then(Response=>Response.json())
+     .then(data=> {
+        wName.innerHTML = data['name'];
+        wDesc.innerHTML = data['weather'][0]['description'];
+        wTemp.innerHTML = data['main']['temp']+'&#8451';
+        var iconCode = data['weather'][0]['icon'];
+        wIcon.innerHTML = "<img src='http://openweathermap.org/img/wn/"+iconCode+"@2x.png'>";
+     })
+.catch(err=>alert("wrong city name!"))
+
+ 
+})
+
+
+</script>
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js">
+</script>
+<script>
+    $(".clicksub").click(function(){
+        $(".inputVal").val(null);
+    });
+</script>
+</html>
